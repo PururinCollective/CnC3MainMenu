@@ -1,0 +1,16 @@
+{
+  "documentTitle": "Pururin Collective — Main Menu",
+  "title": "Pururin Collective",
+  "subtitle": "GLOBAL DEFENSE NETWORK  //  ORBITAL COMMAND",
+  "status": "UPLINK ACTIVE",
+
+  "items": [
+    { "label": "TUTORIAL",    "link": "" },
+    { "label": "CAMPAIGN",    "link": "" },
+    { "label": "SKIRMISH",    "link": "" },
+    { "label": "MULTIPLAYER", "link": "" },
+    { "label": "PROFILES",    "link": "" },
+    { "label": "OPTIONS",     "link": "" },
+    { "label": "QUIT",        "link": "" }
+  ]
+}

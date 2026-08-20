@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pururin Initiative — Main Menu</title>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body class="boot">
+
+<div id="stage">
+
+  <!-- ============ BACKGROUND VIDEO ============ -->
+  <video id="bgvid" autoplay muted loop playsinline preload="auto" poster="">
+    <source src="assets/video/the-expanse.mp4" type="video/mp4">
+  </video>
+  <div id="vidtint"></div>
+
+  <!-- ============ SHARED SVG DEFS ============ -->
+  <svg class="layer" id="lyr-defs" aria-hidden="true" focusable="false">
+    <defs>
+
+      <!-- --- glows --- -->
+      <filter id="fGlowSm" x="-70%" y="-70%" width="240%" height="240%">
+        <feGaussianBlur stdDeviation="2" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="fGlowMd" x="-90%" y="-90%" width="280%" height="280%">
+        <feGaussianBlur stdDeviation="5" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="fGlowLg" x="-120%" y="-120%" width="340%" height="340%">
+        <feGaussianBlur stdDeviation="14" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <radialGradient id="gFlare" cx="50%" cy="50%" r="50%">
+        <stop offset="0"    stop-color="#ffffff" stop-opacity="1"/>
+        <stop offset="0.12" stop-color="#f2fdff" stop-opacity="0.95"/>
+        <stop offset="0.30" stop-color="#bfeaff" stop-opacity="0.45"/>
+        <stop offset="0.60" stop-color="#5fc4f0" stop-opacity="0.12"/>
+        <stop offset="1"    stop-color="#2aa0d8" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="gStreak" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0"    stop-color="#bfeaff" stop-opacity="0"/>
+        <stop offset="0.5"  stop-color="#eafcff" stop-opacity="0.55"/>
+        <stop offset="1"    stop-color="#bfeaff" stop-opacity="0"/>
+      </linearGradient>
+      <filter id="fLimb" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="7"/>
+      </filter>
+
+      <!-- --- earth --- -->
+      <radialGradient id="gEarthBody" cx="72%" cy="38%" r="78%">
+        <stop offset="0"   stop-color="#0a2434"/>
+        <stop offset="0.45" stop-color="#04121b"/>
+        <stop offset="1"   stop-color="#000508"/>
+      </radialGradient>
+      <radialGradient id="gSunHalo" cx="50%" cy="50%" r="50%">
+        <stop offset="0.60" stop-color="#9fdcff" stop-opacity="0"/>
+        <stop offset="0.795" stop-color="#7fd0ff" stop-opacity="0.30"/>
+        <stop offset="0.84" stop-color="#3aa8e0" stop-opacity="0.20"/>
+        <stop offset="1"    stop-color="#04283c" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="gAtmoRing" cx="50%" cy="50%" r="50%">
+        <stop offset="0.88" stop-color="#7fe4ff" stop-opacity="0"/>
+        <stop offset="0.952" stop-color="#cdf5ff" stop-opacity="0.9"/>
+        <stop offset="0.978" stop-color="#3fb9ef" stop-opacity="0.45"/>
+        <stop offset="1"    stop-color="#0a5c86" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="gTerminator" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0"    stop-color="#000105" stop-opacity="0.99"/>
+        <stop offset="0.74" stop-color="#000105" stop-opacity="0.96"/>
+        <stop offset="0.85" stop-color="#000105" stop-opacity="0.82"/>
+        <stop offset="0.93" stop-color="#000105" stop-opacity="0.55"/>
+        <stop offset="0.985" stop-color="#000105" stop-opacity="0.10"/>
+        <stop offset="1"    stop-color="#000105" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="gLitSide" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0"     stop-color="#fff" stop-opacity="0"/>
+        <stop offset="0.50"  stop-color="#fff" stop-opacity="0.05"/>
+        <stop offset="0.80"  stop-color="#fff" stop-opacity="0.40"/>
+        <stop offset="0.935" stop-color="#fff" stop-opacity="1"/>
+        <stop offset="1"     stop-color="#fff" stop-opacity="1"/>
+      </linearGradient>
+      <mask id="mLit"><rect id="mLitRect" fill="url(#gLitSide)"/></mask>
+
+      <!-- --- hexagons --- -->
+      <pattern id="pHex" patternUnits="userSpaceOnUse" width="52" height="90">
+        <path d="M13 0 L39 0 L52 22.5 L39 45 L13 45 L0 22.5 Z
+                 M39 45 L65 45 L78 67.5 L65 90 L39 90 L26 67.5 Z
+                 M-13 45 L13 45 L26 67.5 L13 90 L-13 90 L-26 67.5 Z"
+              fill="none" stroke="#39c8ff" stroke-width="1"/>
+      </pattern>
+      <linearGradient id="gShine" x1="0" y1="0" x2="1" y2="0.35">
+        <stop offset="0"    stop-color="#fff" stop-opacity="0"/>
+        <stop offset="0.42" stop-color="#fff" stop-opacity="0.55"/>
+        <stop offset="0.5"  stop-color="#fff" stop-opacity="0.95"/>
+        <stop offset="0.58" stop-color="#fff" stop-opacity="0.55"/>
+        <stop offset="1"    stop-color="#fff" stop-opacity="0"/>
+        <animateTransform attributeName="gradientTransform" type="translate"
+                          values="-1.6 0; 1.6 0" dur="7s" repeatCount="indefinite"/>
+      </linearGradient>
+
+      <!-- --- atlas --- -->
+      <linearGradient id="gLand" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0"   stop-color="#06201f" stop-opacity="0.30"/>
+        <stop offset="1"   stop-color="#020e0d" stop-opacity="0.18"/>
+      </linearGradient>
+      <linearGradient id="gAtlasFade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0"    stop-color="#fff" stop-opacity="0"/>
+        <stop offset="0.18" stop-color="#fff" stop-opacity="0.75"/>
+        <stop offset="0.82" stop-color="#fff" stop-opacity="1"/>
+        <stop offset="1"    stop-color="#fff" stop-opacity="0.25"/>
+      </linearGradient>
+      <mask id="mAtlas"><rect id="mAtlasRect" fill="url(#gAtlasFade)"/></mask>
+
+      <!-- --- menu buttons --- -->
+      <linearGradient id="gBtn" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0"    stop-color="#0e5c86" stop-opacity="0.92"/>
+        <stop offset="0.35" stop-color="#0a3f60" stop-opacity="0.80"/>
+        <stop offset="1"    stop-color="#062338" stop-opacity="0.55"/>
+      </linearGradient>
+      <linearGradient id="gBtnHot" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0"    stop-color="#63d8ff" stop-opacity="0.95"/>
+        <stop offset="0.45" stop-color="#1d86bb" stop-opacity="0.88"/>
+        <stop offset="1"    stop-color="#0a3550" stop-opacity="0.6"/>
+      </linearGradient>
+      <linearGradient id="gBtnSheen" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0"   stop-color="#eaffff" stop-opacity="0.30"/>
+        <stop offset="0.5" stop-color="#eaffff" stop-opacity="0.05"/>
+        <stop offset="1"   stop-color="#000" stop-opacity="0.18"/>
+      </linearGradient>
+
+      <!-- --- ruler --- -->
+      <linearGradient id="gRuler" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0"   stop-color="#0b2f1c" stop-opacity="0.10"/>
+        <stop offset="0.35" stop-color="#0d3a22" stop-opacity="0.78"/>
+        <stop offset="1"   stop-color="#04160d" stop-opacity="0.95"/>
+      </linearGradient>
+      <linearGradient id="gSweep" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0"    stop-color="#7dffb4" stop-opacity="0"/>
+        <stop offset="0.5"  stop-color="#7dffb4" stop-opacity="0.75"/>
+        <stop offset="1"    stop-color="#7dffb4" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ============ VISUAL LAYERS (all SVG) ============ -->
+  <svg class="layer" id="lyr-hex"   aria-hidden="true" focusable="false"></svg>
+  <svg class="layer" id="lyr-atlas" aria-hidden="true" focusable="false"></svg>
+  <svg class="layer" id="lyr-globe" aria-hidden="true" focusable="false"></svg>
+  <svg class="layer" id="lyr-hud"   aria-hidden="true" focusable="false"></svg>
+  <svg class="layer" id="lyr-menu"  role="navigation" aria-label="Main menu"></svg>
+
+  <div id="scan"></div>
+  <div id="curtain"></div>
+</div>
+
+<script src="js/worlddata.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
