@@ -1,0 +1,73 @@
+# ---- tooling ----
+.claude/
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# ---- OS clutter ----
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# ---- editor / scratch files ----
+*.bak
+*.orig
+*.rej
+*~
+*.swp
+*.swo
+*.tmp
+*.temp
+.~lock.*
+
+# ---- local dev servers & logs ----
+*.log
+npm-debug.log*
+yarn-error.log*
+.cache/
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---- environment / secrets ----
+.env
+.env.*
+!.env.example
+
+# ---- source art & media working files ----
+# Exported assets under assets/ are tracked; these are the big editable
+# originals that do not belong in the repo.
+*.psd
+*.psb
+*.ai
+*.xcf
+*.blend
+*.blend[0-9]*
+*.aep
+*.prproj
+*.veg
+*.kdenlive
+/raw/
+/scratch/
+/wip/
+
+# Whatever the rules above say, never drop a file the page actually loads.
+!assets/**/*.mp4
+!assets/**/*.webm
+!assets/**/*.wav
+!assets/**/*.mp3
+!assets/**/*.ogg
+!assets/**/*.png
+!assets/**/*.jpg
+!assets/**/*.svg
+!assets/**/*.woff2
